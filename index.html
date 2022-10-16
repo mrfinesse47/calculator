@@ -13,13 +13,21 @@
     <div id="calculator">
       <header>
         <h1>Calc</h1>
-        <div>
+        <div class="container-right">
           <h3>THEME</h3>
-          <div><span>1</span><span>2</span><span>3</span></div>
+          <div>
+            <div id="tri-state-mode-display">
+              <span>1</span><span>2</span><span>3</span>
+            </div>
+            <button
+              tabindex="2"
+              id="tri-state-slider"
+              aria-label="change theme"
+            >
+              <div id="tri-state-slider-handle"></div>
+            </button>
+          </div>
         </div>
-        <button tabindex="2" id="tri-state-slider" aria-label="change theme">
-          <div id="tri-state-slider-handle"></div>
-        </button>
       </header>
       <main></main>
     </div>

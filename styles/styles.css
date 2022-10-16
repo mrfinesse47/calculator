@@ -9,10 +9,62 @@ body {
   font-style: normal;
   margin: 0;
   padding: 0;
-  background-color: var(--bg-color);
+
   color: var(--font-color-main);
 }
 
 h1 {
   color: var(--font-color);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.8125rem;
+  text-align: center;
+  letter-spacing: -0.0333rem;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 0.6875rem;
+  text-align: center;
+  letter-spacing: 0.0625rem;
+}
+
+#calculator {
+  background-color: var(--bg-color);
+  padding: 1.875rem 1.5rem 1.9375rem;
+  max-width: 22.8125rem;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+header .container-right {
+  display: flex;
+  align-items: center;
+}
+
+header .container-right h3 {
+  margin-right: 26px;
+}
+
+header #tri-state-mode-display {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0 0.6563rem 0.3125rem;
+}
+
+header #tri-state-mode-display:hover {
+  cursor: pointer;
+}
+
+header #tri-state-mode-display span {
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 0.6875rem;
 }
