@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+#tri-state-slider {
+  border: none;
+}
+
+#tri-state-slider:focus {
+  border: 1px solid #a2b2e1;
+  outline: #a2b2e1;
+}
+#tri-state-slider:active {
+  outline: #a2b2e1;
+  border: 1px solid #a2b2e1;
+}
+#tri-state-slider {
+  /* you can control the size of the slider with font-size due to em resizing */
+  font-size: 1rem;
+  background-color: #242d44;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.625em;
+  width: 4.4375em;
+  border-radius: 0.8125em;
+  margin-bottom: 30%;
+}
+#tri-state-slider:hover {
+  cursor: pointer;
+}
+#tri-state-slider-handle {
+  background-color: #f96b5b;
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+}
+
+.left-to-right {
+  animation: left-to-right 0.4s cubic-bezier(0.18, 0.89, 0.35, 1.15) forwards;
+}
+.right-to-left {
+  animation: right-to-left 0.4s cubic-bezier(0.18, 0.89, 0.35, 1.15) forwards;
+}
+.left-to-centre {
+  animation: left-to-centre 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) forwards;
+}
+.right-to-centre {
+  animation: right-to-centre 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) forwards;
+}
+.centre-to-left {
+  animation: centre-to-left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) forwards;
+}
+.centre-to-right {
+  animation: centre-to-right 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) forwards;
+}
+/* maybe this could have been done by transitioning flexbox justify content */
+@keyframes left-to-right {
+  0% {
+    transform: translateX(-135%);
+  }
+  100% {
+    transform: translateX(135%);
+  }
+}
+@keyframes right-to-left {
+  0% {
+    transform: translateX(135%);
+  }
+  100% {
+    transform: translateX(-135%);
+  }
+}
+@keyframes left-to-centre {
+  0% {
+    transform: translateX(-135%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes right-to-centre {
+  0% {
+    transform: translateX(135%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes centre-to-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-135%);
+  }
+}
+@keyframes centre-to-right {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(135%);
+  }
+}
