@@ -53,6 +53,12 @@
 .centre-to-right {
   animation: centre-to-right 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) forwards;
 }
+.left {
+  transform: translateX(-135%);
+}
+.right {
+  transform: translateX(135%);
+}
 /* maybe this could have been done by transitioning flexbox justify content */
 @keyframes left-to-right {
   0% {

@@ -1,13 +1,21 @@
+/* root is default dark mode */
 :root {
-  --bg-color: #171923;
-  --bg-light: #232535;
-  --font-color: #c5cddb;
-  --font-light: #ffffff;
+  --bg-color: #3a4663;
+  --bg-secondary: #232535;
+  --font-color-main: #ffffff;
+  --font-secondary: #ffffff;
 }
 
 .lightMode {
   --bg-color: #e8e6dc;
-  --bg-light: #dcdaca;
-  --font-color: #3d3d3d;
-  --font-light: #202020;
+  --bg-secondary: #dcdaca;
+  --font-color-main: #3d3d3d;
+  --font-secondary: #202020;
+}
+
+.darkAccent {
+  --bg-color: #e8e6dc;
+  --bg-secondary: #dcdaca;
+  --font-color-main: #3d3d3d;
+  --font-secondary: #202020;
 }

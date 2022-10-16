@@ -1,14 +1,30 @@
-let position = 1; //0: left, 1: centre, 2: right
+let position = 0; //0: left, 1: centre, 2: right
 let wantsToMoveTo = null;
-isAnimating = false; //helps lock it out while animating
-const el = document.getElementById('tri-state-slider-handle');
+let isAnimating = false; //helps lock it out while animating
+const sliderHandle = document.getElementById('tri-state-slider-handle');
 const sliderContainer = document.getElementById('tri-state-slider');
 
-el.addEventListener('animationend', () => {
+triStateSliderInit(position);
+
+sliderHandle.addEventListener('animationend', () => {
   isAnimating = false;
 });
 
 sliderContainer.addEventListener('click', (event) => {
+  triStateSliderMove(event);
+});
+
+function triStateSliderInit(position) {
+  if (position === 0) {
+    sliderHandle.classList.add('left');
+  }
+  //1 is the default
+  if (position === 2) {
+    sliderHandle.classList.add('right');
+  }
+}
+
+function triStateSliderMove(event) {
   if (isAnimating) return; //weird effects if you trigger 2 animations or more
   let target = event.target;
   if (event.target.id === 'tri-state-slider-handle') {
@@ -23,25 +39,25 @@ sliderContainer.addEventListener('click', (event) => {
 
   isAnimating = true;
   //remove all keyframe classes
-  removeAllKeyframeClasses(el);
+  removeAllKeyframeClasses(sliderHandle);
 
   if (position === 0 && wantsToMoveTo === 1) {
-    el.classList.add('left-to-centre');
+    sliderHandle.classList.add('left-to-centre');
     position = 1;
   } else if (position === 1 && wantsToMoveTo === 2) {
-    el.classList.add('centre-to-right');
+    sliderHandle.classList.add('centre-to-right');
     position = 2;
   } else if (position === 0 && wantsToMoveTo === 2) {
-    el.classList.add('left-to-right');
+    sliderHandle.classList.add('left-to-right');
     position = 2;
   } else if (position === 2 && wantsToMoveTo === 1) {
-    el.classList.add('right-to-centre');
+    sliderHandle.classList.add('right-to-centre');
     position = 1;
   } else if (position === 2 && wantsToMoveTo === 0) {
-    el.classList.add('right-to-left');
+    sliderHandle.classList.add('right-to-left');
     position = 0;
   } else if (position === 1 && wantsToMoveTo === 0) {
-    el.classList.add('centre-to-left');
+    sliderHandle.classList.add('centre-to-left');
     position = 0;
   }
 
@@ -68,12 +84,12 @@ sliderContainer.addEventListener('click', (event) => {
     }
     return destination;
   }
-  function removeAllKeyframeClasses(el) {
-    el.classList.remove('left-to-right');
-    el.classList.remove('right-to-left');
-    el.classList.remove('right-to-centre');
-    el.classList.remove('left-to-centre');
-    el.classList.remove('centre-to-right');
-    el.classList.remove('centre-to-left');
+  function removeAllKeyframeClasses(sliderHandle) {
+    sliderHandle.classList.remove('left-to-right');
+    sliderHandle.classList.remove('right-to-left');
+    sliderHandle.classList.remove('right-to-centre');
+    sliderHandle.classList.remove('left-to-centre');
+    sliderHandle.classList.remove('centre-to-right');
+    sliderHandle.classList.remove('centre-to-left');
   }
-});
+}
