@@ -20,26 +20,21 @@ h1 {
   line-height: 1.8125rem;
   text-align: center;
   letter-spacing: -0.0333rem;
-}
-
-h3 {
-  font-weight: 700;
-  font-size: 0.75rem;
-  line-height: 0.6875rem;
-  text-align: center;
-  letter-spacing: 0.0625rem;
+  padding-bottom: 6px;
 }
 
 #calculator {
   background-color: var(--bg-color);
   padding: 1.875rem 1.5rem 1.9375rem;
-  max-width: 22.8125rem;
+  max-width: 23.4375rem;
   margin: 0 auto;
 }
 
 header {
   display: flex;
   justify-content: space-between;
+  margin-left: 0.4375rem;
+  margin-bottom: 10.73px;
 }
 
 header .container-right {
@@ -48,7 +43,16 @@ header .container-right {
 }
 
 header .container-right h3 {
-  margin-right: 26px;
+  margin-right: 1.625rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 0.6875rem;
+  text-align: center;
+  letter-spacing: 0.0625rem;
+}
+
+header #tri-state-slider-handle {
+  background-color: var(--slider-handle);
 }
 
 header #tri-state-mode-display {
@@ -67,4 +71,16 @@ header #tri-state-mode-display span {
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 0.6875rem;
+}
+
+.display {
+  border-radius: 0.625rem;
+  background-color: var(--bg-secondary);
+  text-align: right;
+  padding: 0.725em 0.6em 0.55em;
+  font-size: 40px;
+  line-height: 0.925em;
+  /* identical to box height */
+  text-align: right;
+  letter-spacing: -0.01668px;
 }
