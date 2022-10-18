@@ -103,12 +103,19 @@ header #tri-state-mode-display span {
 
 .keypad .key {
   text-align: center;
+  color: var(--bg-secondary);
   background-color: var(--key-bg-main);
   font-style: normal;
   font-weight: 700;
   font-size: 2rem;
   width: 2em;
-  line-height: 0.90625rem;
+  line-height: 0.90625em;
   letter-spacing: -0.01665em;
   padding: 0.40625em 0.3125em;
+  box-shadow: inset 0rem -0.25rem 0rem #b3a497;
+  border-radius: 0.15625em;
+}
+
+.keypad .key.delete {
+  background-color: var(--key-bg-secondary);
 }
