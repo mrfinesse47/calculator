@@ -89,6 +89,7 @@ header #tri-state-mode-display span {
   background-color: var(--bg-secondary);
   margin-top: 1.5rem;
   border-radius: 0.625rem;
+  height: 23.25rem;
 }
 
 .keypad .container {
@@ -99,23 +100,32 @@ header #tri-state-mode-display span {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 13px;
+}
+
+.keypad.key-row:last-child {
+  margin-bottom: none;
 }
 
 .keypad .key {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--bg-secondary);
   background-color: var(--key-bg-main);
   font-style: normal;
   font-weight: 700;
   font-size: 2rem;
-  width: 2em;
+  width: 1.875em;
+  height: 2em;
   line-height: 0.90625em;
   letter-spacing: -0.01665em;
   padding: 0.40625em 0.3125em;
-  box-shadow: inset 0rem -0.25rem 0rem #b3a497;
+  box-shadow: inset 0rem -0.25rem 0rem var(--key-bg-main-shadow);
   border-radius: 0.15625em;
 }
 
 .keypad .key.delete {
   background-color: var(--key-bg-secondary);
+  box-shadow: inset 0px -4px 0px var(--key-bg-secondary-shadow);
 }

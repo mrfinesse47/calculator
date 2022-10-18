@@ -8,7 +8,9 @@
   --slider-handle: #d03f2f;
 
   --key-bg-main: #eae3dc;
+  --key-bg-main-shadow: #b3a497;
   --key-bg-secondary: #647198;
+  --key-bg-secondary-shadow: #414e73;
 }
 
 .lightMode {
@@ -20,7 +22,9 @@
   --slider-handle: #d03f2f;
 
   --key-bg-main: #eae3dc;
+  --key-bg-main-shadow: #b3a497;
   --key-bg-secondary: #647198;
+  --key-bg-secondary-shadow: #414e73;
 }
 
 .darkAccent {
@@ -32,5 +36,7 @@
   --slider-handle: #d03f2f;
 
   --key-bg-main: #eae3dc;
+  --key-bg-main-shadow: #b3a497;
   --key-bg-secondary: #647198;
+  --key-bg-secondary-shadow: #414e73;
 }
