@@ -80,7 +80,6 @@ header #tri-state-mode-display span {
   padding: 0.725em 0.6em 0.55em;
   font-size: 40px;
   line-height: 0.925em;
-  /* identical to box height */
   text-align: right;
   letter-spacing: -0.01668px;
 }
@@ -89,22 +88,22 @@ header #tri-state-mode-display span {
   background-color: var(--bg-secondary);
   margin-top: 1.5rem;
   border-radius: 0.625rem;
-  height: 23.25rem;
+  /* height: 23.25rem; */
 }
 
 .keypad .container {
   padding: 1.5rem;
 }
 
-.keypad .key-row {
+.keypad .keypad-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 13px;
 }
 
-.keypad.key-row:last-child {
-  margin-bottom: none;
+.keypad .keypad-row:last-child {
+  margin-bottom: 0;
 }
 
 .keypad .key {
@@ -112,33 +111,49 @@ header #tri-state-mode-display span {
   justify-content: center;
   align-items: center;
   font-weight: 700;
+  width: 3.75rem;
+  border-radius: 0.3125rem;
+  height: 4rem;
 }
 
-.key:hover {
+.keypad .key:hover {
   cursor: pointer;
 }
 
-.keypad .std {
-  color: var(--bg-secondary);
+.keypad .key-std {
+  color: var(--key-color-main);
   background-color: var(--key-bg-main);
-
   font-size: 2rem;
-  width: 1.875em;
-  height: 2em;
   line-height: 0.90625em;
   letter-spacing: -0.01665em;
   padding: 0.40625em 0.3125em;
   box-shadow: inset 0rem -0.25rem 0rem var(--key-bg-main-shadow);
-  border-radius: 0.15625em;
 }
 
-.keypad .delete {
+.keypad .key-delete {
   color: var(--key-color-secondary);
   background-color: var(--key-bg-secondary);
   font-size: 1.25rem;
   letter-spacing: -0.01666665em;
-  width: 3em;
   line-height: 0.9em;
   box-shadow: inset 0px -4px 0px var(--key-bg-secondary-shadow);
-  border-radius: 0.25em;
+}
+
+.keypad .key-long {
+  width: 8.3125rem;
+  font-size: 1.25rem;
+  line-height: 1.125rem;
+  letter-spacing: -0.0208rem;
+}
+
+.keypad .key-long.key-long-reset {
+  color: var(--key-color-secondary);
+  background-color: var(--key-bg-secondary);
+  box-shadow: inset 0px -4px 0px var(--key-bg-secondary-shadow);
+}
+
+.keypad .key-long.key-long-equals {
+  color: var(--key-color-secondary);
+  background-color: var(--key-bg-tertiary);
+  box-shadow: inset 0px -4px 0px var(--key-bg-tertiary-shadow);
 }

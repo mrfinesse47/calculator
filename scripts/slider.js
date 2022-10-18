@@ -18,7 +18,7 @@ function triStateSliderInit(position) {
   if (position === 0) {
     sliderHandle.classList.add('left');
   }
-  //1 is the default
+  //1:(centre) is the default in terms of css
   if (position === 2) {
     sliderHandle.classList.add('right');
   }
