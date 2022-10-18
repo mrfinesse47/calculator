@@ -6,6 +6,8 @@
   --font-secondary: #ffffff;
 
   --slider-handle: #d03f2f;
+
+  --key-bg-main: #eae3dc;
 }
 
 .lightMode {
@@ -15,6 +17,8 @@
   --font-secondary: #202020;
 
   --slider-handle: #d03f2f;
+
+  --key-bg-main: #eae3dc;
 }
 
 .darkAccent {
@@ -24,4 +28,6 @@
   --font-secondary: #202020;
 
   --slider-handle: #d03f2f;
+
+  --key-bg-main: #eae3dc;
 }

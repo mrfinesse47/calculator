@@ -84,3 +84,31 @@ header #tri-state-mode-display span {
   text-align: right;
   letter-spacing: -0.01668px;
 }
+
+.keypad {
+  background-color: var(--bg-secondary);
+  margin-top: 1.5rem;
+  border-radius: 0.625rem;
+}
+
+.keypad .container {
+  padding: 1.5rem;
+}
+
+.keypad .key-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.keypad .key {
+  text-align: center;
+  background-color: var(--key-bg-main);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  width: 2em;
+  line-height: 0.90625rem;
+  letter-spacing: -0.01665em;
+  padding: 0.40625em 0.3125em;
+}
