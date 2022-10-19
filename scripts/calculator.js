@@ -8,3 +8,11 @@ document
   .addEventListener('click', () => {
     document.getElementById('tri-state-slider').focus();
   });
+
+const display = document.getElementById('display');
+const keypad = document.getElementById('keypad');
+
+keypad.addEventListener('click', (event) => {
+  const { id } = event.target;
+  display.innerText = id; // a strategy
+});

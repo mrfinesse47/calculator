@@ -75,6 +75,7 @@ header #tri-state-mode-display span {
 }
 
 #display {
+  height: 2.2em;
   border-radius: 0.625rem;
   background-color: var(--bg-secondary);
   text-align: right;
@@ -85,7 +86,7 @@ header #tri-state-mode-display span {
   letter-spacing: -0.01668px;
 }
 
-.keypad {
+#keypad {
   background-color: var(--bg-secondary);
   margin-top: 1.5rem;
   border-radius: 0.625rem;
@@ -129,6 +130,10 @@ header #tri-state-mode-display span {
   letter-spacing: -0.01665em;
   padding: 0.40625em 0.3125em;
   box-shadow: inset 0rem -0.25rem 0rem var(--key-bg-main-shadow);
+}
+
+#keypad .key-std:active {
+  background-color: #fffffe;
 }
 
 #keypad .key-delete {
