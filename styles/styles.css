@@ -74,7 +74,7 @@ header #tri-state-mode-display span {
   line-height: 0.6875rem;
 }
 
-.display {
+#display {
   border-radius: 0.625rem;
   background-color: var(--bg-secondary);
   text-align: right;
@@ -92,22 +92,22 @@ header #tri-state-mode-display span {
   /* height: 23.25rem; */
 }
 
-.keypad .container {
+#keypad .container {
   padding: 1.5rem;
 }
 
-.keypad .keypad-row {
+#keypad .keypad-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 13px;
 }
 
-.keypad .keypad-row:last-child {
+#keypad .keypad-row:last-child {
   margin-bottom: 0;
 }
 
-.keypad .key {
+#keypad .key {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,11 +117,11 @@ header #tri-state-mode-display span {
   height: 4rem;
 }
 
-.keypad .key:hover {
+#keypad .key:hover {
   cursor: pointer;
 }
 
-.keypad .key-std {
+#keypad .key-std {
   color: var(--key-color-main);
   background-color: var(--key-bg-main);
   font-size: 2rem;
@@ -131,7 +131,7 @@ header #tri-state-mode-display span {
   box-shadow: inset 0rem -0.25rem 0rem var(--key-bg-main-shadow);
 }
 
-.keypad .key-delete {
+#keypad .key-delete {
   color: var(--key-color-secondary);
   background-color: var(--key-bg-secondary);
   font-size: 1.25rem;
@@ -140,20 +140,20 @@ header #tri-state-mode-display span {
   box-shadow: inset 0px -4px 0px var(--key-bg-secondary-shadow);
 }
 
-.keypad .key-long {
+#keypad .key-long {
   width: 8.3125rem;
   font-size: 1.25rem;
   line-height: 1.125rem;
   letter-spacing: -0.0208rem;
 }
 
-.keypad .key-long.key-long-reset {
+#keypad .key-long.key-long-reset {
   color: var(--key-color-secondary);
   background-color: var(--key-bg-secondary);
   box-shadow: inset 0px -4px 0px var(--key-bg-secondary-shadow);
 }
 
-.keypad .key-long.key-long-equals {
+#keypad .key-long.key-long-equals {
   color: var(--key-color-secondary);
   background-color: var(--key-bg-tertiary);
   box-shadow: inset 0px -4px 0px var(--key-bg-tertiary-shadow);
