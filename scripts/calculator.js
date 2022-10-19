@@ -28,10 +28,11 @@ keypad.addEventListener('click', (event) => {
   } else if (id === 'delete') {
     console.log('delete');
   } else if (id === '.') {
-    //reset
+    //decimal
     console.log('decimal');
   } else {
     console.log('reset');
+    //reset
   }
 });
 
