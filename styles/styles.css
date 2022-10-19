@@ -90,7 +90,6 @@ header #tri-state-mode-display span {
   background-color: var(--bg-secondary);
   margin-top: 1.5rem;
   border-radius: 0.625rem;
-  /* height: 23.25rem; */
 }
 
 #keypad .container {

@@ -1,3 +1,10 @@
+//focus slider on label click
+document
+  .getElementById('tri-state-mode-display')
+  .addEventListener('click', () => {
+    document.getElementById('tri-state-slider').focus();
+  });
+
 let position = 0; //0: left, 1: centre, 2: right
 let wantsToMoveTo = null;
 let isAnimating = false; //helps lock it out while animating
