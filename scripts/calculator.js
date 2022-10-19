@@ -15,9 +15,23 @@ display.innerText = commaSeparate(accumulator);
 keypad.addEventListener('click', (event) => {
   const { id } = event.target;
 
-  if (id >= 0 && id <= 9) {
-    accumulator += Number(id);
+  if (!id) return;
+
+  if (isNumber(id)) {
+    console.log('number');
+    accumulator += id;
     display.innerText = commaSeparate(accumulator);
+  } else if (isOperator(id)) {
+    console.log('operator');
+  } else if (id === '=') {
+    console.log('equals');
+  } else if (id === 'delete') {
+    console.log('delete');
+  } else if (id === '.') {
+    //reset
+    console.log('decimal');
+  } else {
+    console.log('reset');
   }
 });
 
@@ -35,4 +49,18 @@ function commaSeparate(number) {
   }
 
   return resultStr;
+}
+
+// determine symbol type functions -----------------------------------//
+
+function isOperator(symbol) {
+  if (symbol === '+' || symbol === '*' || symbol === '/' || symbol === '-')
+    return true;
+
+  return false;
+}
+
+function isNumber(symbol) {
+  if (symbol >= 0 && symbol <= 9) return true;
+  return false;
 }
