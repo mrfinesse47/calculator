@@ -3,7 +3,7 @@ const rootElement = document.body;
 // rootElement.classList.toggle('lightMode'); -- how to change theme
 
 let currentOperator = null;
-let accumulator = '10'; //the raw tracking of the results
+let accumulator = '0'; //the raw tracking of the results
 //display may have a different value in the case of sci notation.
 let isAnswerMode = false;
 let prevNum;
@@ -27,11 +27,19 @@ keypad.addEventListener('click', (event) => {
     currentOperator = id;
     prevNum = accumulator;
     accumulator = '0';
-    display.innerText = commaSeparate(accumulator);
   } else if (id === '=') {
-    const res = eval(`${prevNum} ${currentOperator} ${accumulator}`);
+    let res;
+
+    if (currentOperator === '/') {
+      res = Number(prevNum) / Number(accumulator);
+    } else if (currentOperator === '-') {
+      res = Number(prevNum) - Math.abs(Number(accumulator));
+    } else {
+      res = eval(`${prevNum} ${currentOperator} ${accumulator}`);
+    }
+
     if (typeof res === 'number') {
-      accumulator = String(res);
+      prevNum = String(res);
       display.innerText = commaSeparate(String(res));
     }
     //if not a number its some kind of error
@@ -39,6 +47,7 @@ keypad.addEventListener('click', (event) => {
     console.log('delete');
   } else if (id === '.') {
     //decimal
+    //need to check if string already has decimal or not if not add
     console.log('decimal');
   } else {
     console.log('reset');
@@ -49,6 +58,7 @@ keypad.addEventListener('click', (event) => {
 //------------ helpers ----------------------------------------------//
 
 function commaSeparate(str) {
+  console.log(str);
   str = Number(str).toLocaleString();
   return String(str);
 }
