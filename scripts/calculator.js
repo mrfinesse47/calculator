@@ -31,10 +31,12 @@ keypad.addEventListener('click', (event) => {
 
     updateDisplay(userInput);
   } else if (isOperator(id)) {
-    isOperatorSel = true;
     currentOperator = id;
-    prevNum = userInput;
-    userInput = '0';
+    if (!isOperatorSel) {
+      prevNum = userInput;
+      userInput = '0';
+      isOperatorSel = true;
+    }
   } else if (id === '=') {
     isOperatorSel = false;
 
@@ -50,6 +52,9 @@ keypad.addEventListener('click', (event) => {
     } else if (currentOperator === '*') {
       res = Number(prevNum) * Number(userInput);
     }
+
+    res = res.toFixed(6); //need to truncate it to the exact size of the screen of max digits
+
     isResultDisplayed = true;
     updateDisplay(String(res));
 
@@ -90,13 +95,19 @@ function isNumber(symbol) {
   return false;
 }
 
+//------------- display -------------------------------------------//
+
 function updateDisplay(acc) {
+  console.log(acc);
+
   if (acc.length > MAX_DIGITS) {
     display.innerText = Number(acc).toExponential(3);
   } else {
     display.innerText = commaSeparate(String(acc));
   }
 }
+
+//--------------- reset --------------------------------------------//
 
 function resetCalc() {
   isResultDisplayed = false;
