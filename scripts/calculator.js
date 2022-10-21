@@ -3,8 +3,9 @@ const rootElement = document.body;
 // rootElement.classList.toggle('lightMode'); -- how to change theme
 
 let currentOperator = null;
-let accumulator = 3999813; //the raw tracking of the results
+let accumulator = '10'; //the raw tracking of the results
 //display may have a different value in the case of sci notation.
+let isAnswerMode = false;
 let prevNum;
 
 commaSeparate(accumulator);
@@ -20,13 +21,20 @@ keypad.addEventListener('click', (event) => {
   if (!id) return;
 
   if (isNumber(id)) {
-    accumulator = Number(accumulator + id);
+    accumulator = accumulator + id;
     display.innerText = commaSeparate(accumulator);
   } else if (isOperator(id)) {
-    operators(id);
+    currentOperator = id;
+    prevNum = accumulator;
+    accumulator = '0';
+    display.innerText = commaSeparate(accumulator);
   } else if (id === '=') {
-    console.log('equals');
-    equals();
+    const res = eval(`${prevNum} ${currentOperator} ${accumulator}`);
+    if (typeof res === 'number') {
+      accumulator = String(res);
+      display.innerText = commaSeparate(String(res));
+    }
+    //if not a number its some kind of error
   } else if (id === 'delete') {
     console.log('delete');
   } else if (id === '.') {
@@ -38,63 +46,11 @@ keypad.addEventListener('click', (event) => {
   }
 });
 
-//-------------operators---------------------------------------------//
-
-function operators(sign) {
-  prevNum = accumulator;
-  if (sign === '+') {
-    currentOperator = '+';
-    display.innerText = commaSeparate(accumulator);
-    accumulator = 0;
-  } else if (sign === '-') {
-    currentOperator = '-';
-  } else if (sign === '*') {
-    currentOperator = '*';
-  } else {
-    currentOperator = '/';
-  }
-}
-
-//------------ equals -----------------------------------------------//
-
-function equals() {
-  switch (currentOperator) {
-    case '+':
-      console.log(accumulator);
-      accumulator += Number(prevNum);
-      console.log(accumulator);
-
-      display.innerText = commaSeparate(accumulator);
-      prevNum = 0;
-      break;
-    case '-':
-      // code block
-      break;
-    case '*':
-      // code block
-      break;
-    case '/':
-      // code block
-      break;
-    default:
-    //no current
-  }
-}
-
 //------------ helpers ----------------------------------------------//
 
-function commaSeparate(number) {
-  const numberStr = String(number);
-  let resultStr = '';
-
-  for (let i = numberStr.length - 1, k = i; i >= 0; i--) {
-    if ((k - i) % 3 === 0 && i !== k) {
-      resultStr = ',' + resultStr;
-    }
-    resultStr = numberStr[i] + resultStr;
-  }
-
-  return resultStr;
+function commaSeparate(str) {
+  str = Number(str).toLocaleString();
+  return String(str);
 }
 
 // determine symbol type functions -----------------------------------//
