@@ -2,18 +2,21 @@ const rootElement = document.body;
 // default style dark mode -- see theme.css
 // rootElement.classList.toggle('lightMode'); -- how to change theme
 
-let currentOperator = null;
-let accumulator = '0'; //the raw tracking of the results
-//display may have a different value in the case of sci notation.
-let isAnswerMode = false;
-let prevNum;
+const MAX_DIGITS = 12;
 
-commaSeparate(accumulator);
+let currentOperator = null;
+let userInput = '0';
+let prevNum = null;
+let res = null;
+let isResultDisplayed = false;
+let isOperatorSel = false;
+
+commaSeparate(userInput);
 
 const display = document.getElementById('display');
 const keypad = document.getElementById('keypad');
 
-display.innerText = commaSeparate(accumulator);
+display.innerText = commaSeparate(userInput);
 
 keypad.addEventListener('click', (event) => {
   const { id } = event.target;
@@ -21,27 +24,35 @@ keypad.addEventListener('click', (event) => {
   if (!id) return;
 
   if (isNumber(id)) {
-    accumulator = accumulator + id;
-    display.innerText = commaSeparate(accumulator);
+    if (isResultDisplayed && !isOperatorSel) {
+      resetCalc();
+    }
+    userInput = userInput + id;
+
+    updateDisplay(userInput);
   } else if (isOperator(id)) {
+    isOperatorSel = true;
     currentOperator = id;
-    prevNum = accumulator;
-    accumulator = '0';
+    prevNum = userInput;
+    userInput = '0';
   } else if (id === '=') {
-    let res;
+    isOperatorSel = false;
 
-    if (currentOperator === '/') {
-      res = Number(prevNum) / Number(accumulator);
+    if (res !== null) {
+      prevNum = res;
+    }
+    if (currentOperator === '+') {
+      res = Number(prevNum) + Number(userInput);
     } else if (currentOperator === '-') {
-      res = Number(prevNum) - Math.abs(Number(accumulator));
-    } else {
-      res = eval(`${prevNum} ${currentOperator} ${accumulator}`);
+      res = Number(prevNum) - Number(userInput);
+    } else if (currentOperator === '/') {
+      res = Number(prevNum) / Number(userInput);
+    } else if (currentOperator === '*') {
+      res = Number(prevNum) * Number(userInput);
     }
+    isResultDisplayed = true;
+    updateDisplay(String(res));
 
-    if (typeof res === 'number') {
-      prevNum = String(res);
-      display.innerText = commaSeparate(String(res));
-    }
     //if not a number its some kind of error
   } else if (id === 'delete') {
     console.log('delete');
@@ -58,8 +69,10 @@ keypad.addEventListener('click', (event) => {
 //------------ helpers ----------------------------------------------//
 
 function commaSeparate(str) {
-  console.log(str);
-  str = Number(str).toLocaleString();
+  str = Number(str).toLocaleString('en-US', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 9,
+  });
   return String(str);
 }
 
@@ -75,4 +88,20 @@ function isOperator(symbol) {
 function isNumber(symbol) {
   if (symbol >= 0 && symbol <= 9) return true;
   return false;
+}
+
+function updateDisplay(acc) {
+  if (acc.length > MAX_DIGITS) {
+    display.innerText = Number(acc).toExponential(3);
+  } else {
+    display.innerText = commaSeparate(String(acc));
+  }
+}
+
+function resetCalc() {
+  isResultDisplayed = false;
+  currentOperator = null;
+  userInput = '0';
+  prevNum = null;
+  res = null;
 }
