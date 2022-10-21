@@ -52,7 +52,7 @@ keypad.addEventListener('click', (event) => {
     } else if (currentOperator === '*') {
       res = Number(prevNum) * Number(userInput);
     }
-    //
+    ////
     res = res.toFixed(6); //need to truncate it to the exact size of the screen of max digits
 
     isResultDisplayed = true;
