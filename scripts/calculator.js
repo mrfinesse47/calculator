@@ -2,8 +2,10 @@ const rootElement = document.body;
 // default style dark mode -- see theme.css
 // rootElement.classList.toggle('lightMode'); -- how to change theme
 
+let currentOperator = null;
 let accumulator = 3999813; //the raw tracking of the results
 //display may have a different value in the case of sci notation.
+let prevNum;
 
 commaSeparate(accumulator);
 
@@ -18,13 +20,13 @@ keypad.addEventListener('click', (event) => {
   if (!id) return;
 
   if (isNumber(id)) {
-    console.log('number');
-    accumulator += id;
+    accumulator = Number(accumulator + id);
     display.innerText = commaSeparate(accumulator);
   } else if (isOperator(id)) {
-    console.log('operator');
+    operators(id);
   } else if (id === '=') {
     console.log('equals');
+    equals();
   } else if (id === 'delete') {
     console.log('delete');
   } else if (id === '.') {
@@ -35,6 +37,49 @@ keypad.addEventListener('click', (event) => {
     //reset
   }
 });
+
+//-------------operators---------------------------------------------//
+
+function operators(sign) {
+  prevNum = accumulator;
+  if (sign === '+') {
+    currentOperator = '+';
+    display.innerText = commaSeparate(accumulator);
+    accumulator = 0;
+  } else if (sign === '-') {
+    currentOperator = '-';
+  } else if (sign === '*') {
+    currentOperator = '*';
+  } else {
+    currentOperator = '/';
+  }
+}
+
+//------------ equals -----------------------------------------------//
+
+function equals() {
+  switch (currentOperator) {
+    case '+':
+      console.log(accumulator);
+      accumulator += Number(prevNum);
+      console.log(accumulator);
+
+      display.innerText = commaSeparate(accumulator);
+      prevNum = 0;
+      break;
+    case '-':
+      // code block
+      break;
+    case '*':
+      // code block
+      break;
+    case '/':
+      // code block
+      break;
+    default:
+    //no current
+  }
+}
 
 //------------ helpers ----------------------------------------------//
 
