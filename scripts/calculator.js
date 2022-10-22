@@ -60,8 +60,6 @@ keypad.addEventListener('click', (event) => {
 
     let truncateHowMuch = 12 - digitsLeftOfDecimal;
     //helps to display floating point numbers
-    //or else we get weird floating points like 1.00000000000006 etc
-    //and then they wont ever get out of scientific notation mode when the number should be low.
     if (truncateHowMuch <= 0) {
       truncateHowMuch = 0;
     }
@@ -93,12 +91,14 @@ keypad.addEventListener('click', (event) => {
 //------------ helpers ----------------------------------------------//
 
 function commaSeparate(str) {
+  console.log(str);
   const minimumFractionDigits =
     res === null ? Math.min(decimalPointCount(str), MAX_DIGITS) : 0;
   str = Number(str).toLocaleString('en-US', {
     minimumFractionDigits,
     maximumFractionDigits: MAX_DIGITS,
   });
+
   return String(str);
 }
 
@@ -120,7 +120,6 @@ function isNumber(symbol) {
 //------------- display -------------------------------------------//
 
 function updateDisplay(acc) {
-  console.log(acc);
   display.innerText = commaSeparate(String(acc));
   if (isOverflowing()) {
     display.innerText = Number(acc).toExponential(3);
