@@ -2,10 +2,7 @@ const rootElement = document.body;
 // default style dark mode -- see theme.css
 // rootElement.classList.toggle('lightMode'); -- how to change theme
 
-const MAX_DIGITS = 12;
-const MAX_NUM = 10 ** (MAX_DIGITS - 1);
-const MIN_NUM = 10 ** (MAX_DIGITS - 2) * -1; //has to be one less due to - sign taking up a space
-const SMALL_NUM = 0.1 ** (MAX_DIGITS - 2); //one less due to decimal point
+const MAX_DIGITS = 20;
 
 let currentOperator = null;
 let userInput = '0';
@@ -13,8 +10,6 @@ let prevNum = null;
 let res = null;
 let isResultDisplayed = false;
 let isOperatorSel = false;
-
-commaSeparate(userInput);
 
 const display = document.getElementById('display');
 const keypad = document.getElementById('keypad');
@@ -32,10 +27,9 @@ keypad.addEventListener('click', (event) => {
       res === Infinity ||
       res === -Infinity
     ) {
-      resetCalc();
+      resetCalcMemory();
     }
     userInput = userInput + id;
-
     updateDisplay(userInput);
   } else if (isOperator(id)) {
     currentOperator = id;
@@ -46,7 +40,7 @@ keypad.addEventListener('click', (event) => {
     }
   } else if (id === '=') {
     if (currentOperator === null) return;
-    console.log('current operator', currentOperator);
+
     isOperatorSel = false;
 
     if (res !== null) {
@@ -64,9 +58,10 @@ keypad.addEventListener('click', (event) => {
 
     const digitsLeftOfDecimal = Math.floor(Math.log10(Math.abs(res))) + 1;
 
-    // console.log('digits', digitsLeftOfDecimal);
-
     let truncateHowMuch = 12 - digitsLeftOfDecimal;
+    //helps to display floating point numbers
+    //or else we get weird floating points like 1.00000000000006 etc
+    //and then they wont ever get out of scientific notation mode when the number should be low.
     if (truncateHowMuch <= 0) {
       truncateHowMuch = 0;
     }
@@ -74,33 +69,35 @@ keypad.addEventListener('click', (event) => {
       truncateHowMuch = 100;
     }
 
-    // console.log(truncateHowMuch);
-
     const num = res.toFixed(truncateHowMuch); //need to truncate it to the exact size of the screen of max digits
 
-    console.log(num);
     isResultDisplayed = true;
     updateDisplay(String(num));
-
-    //if not a number its some kind of error
   } else if (id === 'delete') {
     console.log('delete');
   } else if (id === '.') {
-    //decimal
-    //need to check if string already has decimal or not if not add
-    console.log('decimal');
-  } else {
-    console.log('reset');
-    //reset
+    if (!userInput.includes('.')) {
+      if (isResultDisplayed && !isOperatorSel) {
+        resetCalcMemory();
+        userInput = '0.';
+      } else {
+        userInput += '.';
+      }
+    }
+  } else if (id === 'reset') {
+    resetCalcMemory();
+    updateDisplay(userInput);
   }
 });
 
 //------------ helpers ----------------------------------------------//
 
 function commaSeparate(str) {
+  const minimumFractionDigits =
+    res === null ? Math.min(decimalPointCount(str), MAX_DIGITS) : 0;
   str = Number(str).toLocaleString('en-US', {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 9,
+    minimumFractionDigits,
+    maximumFractionDigits: MAX_DIGITS,
   });
   return String(str);
 }
@@ -116,33 +113,46 @@ function isOperator(symbol) {
 
 function isNumber(symbol) {
   if (symbol >= 0 && symbol <= 9) return true;
+
   return false;
 }
 
 //------------- display -------------------------------------------//
 
 function updateDisplay(acc) {
-  if (
-    acc >= MAX_NUM ||
-    acc <= MIN_NUM ||
-    (acc <= SMALL_NUM && acc > 0) ||
-    (acc >= -1 * SMALL_NUM && acc < 0)
-  ) {
+  console.log(acc);
+  display.innerText = commaSeparate(String(acc));
+  if (isOverflowing()) {
     display.innerText = Number(acc).toExponential(3);
-  } else {
-    display.innerText = commaSeparate(String(acc));
   }
+
   if (display.innerText === '-0') {
     display.innerText = '0';
   }
 }
 
+//------------------------------------------------------------------//
+
+function decimalPointCount(str) {
+  let startCount = false;
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (startCount) count++;
+    if (str[i] === '.') startCount = true;
+  }
+  return count;
+}
+
 //--------------- reset --------------------------------------------//
 
-function resetCalc() {
+function resetCalcMemory() {
   isResultDisplayed = false;
   currentOperator = null;
   userInput = '0';
   prevNum = null;
   res = null;
+}
+
+function isOverflowing() {
+  return 0 > display.clientWidth - display.scrollWidth ? true : false;
 }
