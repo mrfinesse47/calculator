@@ -3,6 +3,9 @@ const rootElement = document.body;
 // rootElement.classList.toggle('lightMode'); -- how to change theme
 
 const MAX_DIGITS = 12;
+const MAX_NUM = 10 ** (MAX_DIGITS - 1);
+const MIN_NUM = 10 ** (MAX_DIGITS - 2) * -1; //has to be one less due to - sign taking up a space
+const SMALL_NUM = 0.1 ** (MAX_DIGITS - 2); //one less due to decimal point
 
 let currentOperator = null;
 let userInput = '0';
@@ -24,7 +27,11 @@ keypad.addEventListener('click', (event) => {
   if (!id) return;
 
   if (isNumber(id)) {
-    if (isResultDisplayed && !isOperatorSel) {
+    if (
+      (isResultDisplayed && !isOperatorSel) ||
+      res === Infinity ||
+      res === -Infinity
+    ) {
       resetCalc();
     }
     userInput = userInput + id;
@@ -38,6 +45,8 @@ keypad.addEventListener('click', (event) => {
       isOperatorSel = true;
     }
   } else if (id === '=') {
+    if (currentOperator === null) return;
+    console.log('current operator', currentOperator);
     isOperatorSel = false;
 
     if (res !== null) {
@@ -53,10 +62,25 @@ keypad.addEventListener('click', (event) => {
       res = Number(prevNum) * Number(userInput);
     }
 
-    res = res.toFixed(6); //need to truncate it to the exact size of the screen of max digits
+    const digitsLeftOfDecimal = Math.floor(Math.log10(Math.abs(res))) + 1;
 
+    // console.log('digits', digitsLeftOfDecimal);
+
+    let truncateHowMuch = 12 - digitsLeftOfDecimal;
+    if (truncateHowMuch <= 0) {
+      truncateHowMuch = 0;
+    }
+    if (truncateHowMuch > 100) {
+      truncateHowMuch = 100;
+    }
+
+    // console.log(truncateHowMuch);
+
+    const num = res.toFixed(truncateHowMuch); //need to truncate it to the exact size of the screen of max digits
+
+    console.log(num);
     isResultDisplayed = true;
-    updateDisplay(String(res));
+    updateDisplay(String(num));
 
     //if not a number its some kind of error
   } else if (id === 'delete') {
@@ -98,12 +122,18 @@ function isNumber(symbol) {
 //------------- display -------------------------------------------//
 
 function updateDisplay(acc) {
-  console.log(acc);
-
-  if (acc.length > MAX_DIGITS) {
+  if (
+    acc >= MAX_NUM ||
+    acc <= MIN_NUM ||
+    (acc <= SMALL_NUM && acc > 0) ||
+    (acc >= -1 * SMALL_NUM && acc < 0)
+  ) {
     display.innerText = Number(acc).toExponential(3);
   } else {
     display.innerText = commaSeparate(String(acc));
+  }
+  if (display.innerText === '-0') {
+    display.innerText = '0';
   }
 }
 
