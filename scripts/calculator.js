@@ -2,8 +2,6 @@ const rootElement = document.body;
 // default style dark mode -- see theme.css
 // rootElement.classList.toggle('lightMode'); -- how to change theme
 
-// const MAX_DIGITS = 20;
-
 let currentOperator = null;
 let userInput = '0';
 let prevNum = null;
@@ -90,11 +88,11 @@ keypad.addEventListener('click', (event) => {
 //------------ helpers ----------------------------------------------//
 
 function commaSeparate(str) {
-  const minimumFractionDigits =
-    res === null ? Math.min(decimalPointCount(str), 9) : 0;
+  const minimumFractionDigits = res === null ? decimalPointCount(str) : 0;
+
   str = Number(str).toLocaleString('en-US', {
     minimumFractionDigits,
-    maximumFractionDigits: 20,
+    maximumFractionDigits: 20, //starts screwing up past 20 digits, so i limit display to 17
   });
 
   return String(str);
@@ -118,9 +116,13 @@ function isNumber(symbol) {
 //------------- display -------------------------------------------//
 
 function updateDisplay(acc) {
-  display.innerText = commaSeparate(String(acc));
-  if (isOverflowing()) {
-    display.innerText = Number(acc).toExponential(3);
+  const formattedDisplayVal = commaSeparate(String(acc));
+  display.innerText = formattedDisplayVal;
+  if (
+    isOverflowing() ||
+    decimalPointCount(formattedDisplayVal) >= 17 //due to toLocaleString limitations
+  ) {
+    display.innerText = Number(acc).toExponential(6);
   }
 
   if (display.innerText === '-0') {
@@ -150,7 +152,7 @@ function resetCalcMemory() {
   res = null;
 }
 
-//-----------------------------------------------------------------//
+//-------------------overflow ------------------------------------------//
 
 function isOverflowing() {
   return 0 > display.clientWidth - display.scrollWidth ? true : false;
