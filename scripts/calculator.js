@@ -54,19 +54,10 @@ keypad.addEventListener('click', (event) => {
       res = Number(prevNum) * Number(userInput);
     }
 
-    const digitsLeftOfDecimal = Math.floor(Math.log10(Math.abs(res))) + 1;
-    let truncateHowMuch = 12 - digitsLeftOfDecimal;
-    //helps to display floating point numbers
-    if (truncateHowMuch <= 0) {
-      truncateHowMuch = 0;
-    }
-    if (truncateHowMuch > 100) {
-      truncateHowMuch = 100;
-    }
-
-    const num = res.toFixed(truncateHowMuch); //need to truncate it to the exact size of the screen of max digits
+    const num = res.toFixed(9); //need to truncate it to stay out of scientific notation for as long as possible
 
     isResultDisplayed = true;
+
     updateDisplay(String(num));
   } else if (id === 'delete') {
     console.log('delete');
