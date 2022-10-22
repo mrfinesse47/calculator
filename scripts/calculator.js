@@ -144,6 +144,10 @@ function updateDisplay(acc) {
     display.innerText = Number(acc).toExponential(6);
   }
 
+  if (display.innerText === 'NaN') {
+    display.innerText = '0';
+  }
+
   if (display.innerText === '-0') {
     display.innerText = '0';
   }
