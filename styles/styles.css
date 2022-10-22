@@ -108,6 +108,7 @@ header #tri-state-mode-display span {
 }
 
 #keypad .key {
+  user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
