@@ -2,7 +2,7 @@ const rootElement = document.body;
 // default style dark mode -- see theme.css
 // rootElement.classList.toggle('lightMode'); -- how to change theme
 
-const MAX_DIGITS = 20;
+// const MAX_DIGITS = 20;
 
 let currentOperator = null;
 let userInput = '0';
@@ -57,7 +57,6 @@ keypad.addEventListener('click', (event) => {
     }
 
     const digitsLeftOfDecimal = Math.floor(Math.log10(Math.abs(res))) + 1;
-
     let truncateHowMuch = 12 - digitsLeftOfDecimal;
     //helps to display floating point numbers
     if (truncateHowMuch <= 0) {
@@ -91,12 +90,11 @@ keypad.addEventListener('click', (event) => {
 //------------ helpers ----------------------------------------------//
 
 function commaSeparate(str) {
-  console.log(str);
   const minimumFractionDigits =
-    res === null ? Math.min(decimalPointCount(str), MAX_DIGITS) : 0;
+    res === null ? Math.min(decimalPointCount(str), 9) : 0;
   str = Number(str).toLocaleString('en-US', {
     minimumFractionDigits,
-    maximumFractionDigits: MAX_DIGITS,
+    maximumFractionDigits: 20,
   });
 
   return String(str);
@@ -151,6 +149,8 @@ function resetCalcMemory() {
   prevNum = null;
   res = null;
 }
+
+//-----------------------------------------------------------------//
 
 function isOverflowing() {
   return 0 > display.clientWidth - display.scrollWidth ? true : false;
