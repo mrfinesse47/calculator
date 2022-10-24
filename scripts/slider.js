@@ -68,6 +68,20 @@ function triStateSliderMove(event) {
     position = 0;
   }
 
+  // default style dark mode -- see theme.css
+  // darkAccent
+
+  if (position === 0) {
+    rootElement.classList.remove('lightMode');
+    rootElement.classList.remove('darkAccent');
+  } else if (position === 1) {
+    rootElement.classList.add('lightMode');
+    rootElement.classList.remove('darkAccent');
+  } else {
+    rootElement.classList.remove('lightMode');
+    rootElement.classList.add('darkAccent');
+  }
+
   console.log('position is: ', position); //here you can either make use of the position variable
 
   //----------helpers-----------------------------------------//
