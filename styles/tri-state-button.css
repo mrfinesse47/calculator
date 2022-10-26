@@ -14,9 +14,9 @@
   border: 1px solid #a2b2e1;
 }
 #tri-state-slider {
+  background-color: var(--slider-background);
   /* you can control the size of the slider with font-size due to em resizing */
   font-size: 1rem;
-  background-color: #242d44;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +29,7 @@
   cursor: pointer;
 }
 #tri-state-slider-handle {
-  background-color: #f96b5b;
+  background-color: var(--slider-handle);
   height: 1em;
   width: 1em;
   border-radius: 50%;

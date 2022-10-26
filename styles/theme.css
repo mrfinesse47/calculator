@@ -6,6 +6,7 @@
   --font-secondary: #ffffff;
 
   --slider-handle: #d03f2f;
+  --slider-background: #242d44;
 
   --key-color-main: #434a59;
   --key-color-secondary: #fff;
@@ -16,22 +17,30 @@
 
   --key-bg-tertiary: #d03f2f;
   --key-bg-tertiary-shadow: #93261a;
+
+  --display-bg: #232535;
 }
 
 .lightMode {
-  --bg-color: #e8e6dc;
+  --bg-color: #e6e6e6;
   --bg-secondary: #dcdaca;
-  --font-color-main: #3d3d3d;
+  --font-color-main: #36362c;
   --font-secondary: #202020;
 
-  --slider-handle: #d03f2f;
+  --slider-handle: #c85402;
+  --slider-background: #d2cdcd;
 
-  --key-color-main: #434a59;
+  --key-color-main: #36362c;
   --key-color-secondary: #fff;
-  --key-bg-main: #eae3dc;
-  --key-bg-main-shadow: #b3a497;
-  --key-bg-secondary: #647198;
-  --key-bg-secondary-shadow: #414e73;
+  --key-bg-main: #e5e4e1;
+  --key-bg-main-shadow: #a79e91;
+  --key-bg-secondary: #378187;
+  --key-bg-secondary-shadow: #1b6066;
+
+  --key-bg-tertiary: #c85402;
+  --key-bg-tertiary-shadow: #873901;
+
+  --display-bg: #eeeeee;
 }
 
 .darkAccent {
@@ -48,4 +57,6 @@
   --key-bg-main-shadow: #b3a497;
   --key-bg-secondary: #647198;
   --key-bg-secondary-shadow: #414e73;
+
+  --display-bg: #ffffff;
 }
