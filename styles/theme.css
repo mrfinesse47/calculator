@@ -14,19 +14,23 @@
   --key-bg-main: #eae3dc;
   --key-bg-main-shadow: #b3a497;
   --key-bg-secondary: #647198;
+  --key-bg-secondary-active: #a2b2e1;
   --key-bg-secondary-shadow: #414e73;
+  --key-bg-secondary-shadow-active: #414e73;
 
   --key-bg-active: #fffffe;
 
   --key-bg-tertiary: #d03f2f;
+  --key-bg-tertiary-active: #f96b5b;
   --key-bg-tertiary-shadow: #93261a;
+  --key-bg-tertiary-shadow-active: #93261a;
 
   --display-bg: #232535;
 }
 
 .lightMode {
   --bg-color: #e6e6e6;
-  --bg-secondary: #dcdaca;
+  --bg-secondary: #d2cdcd;
   --font-color-main: #36362c;
   --font-secondary: #202020;
 
@@ -39,12 +43,16 @@
   --key-bg-main: #e5e4e1;
   --key-bg-main-shadow: #a79e91;
   --key-bg-secondary: #378187;
+  --key-bg-secondary-active: #62b5bc;
   --key-bg-secondary-shadow: #1b6066;
+  --key-bg-secondary-shadow-active: #1b6066;
 
   --key-bg-active: #fffffe;
 
   --key-bg-tertiary: #c85402;
+  --key-bg-tertiary-active: #ff8a38;
   --key-bg-tertiary-shadow: #873901;
+  --key-bg-tertiary-shadow-active: #873901;
 
   --display-bg: #eeeeee;
 }
@@ -55,7 +63,8 @@
   --font-color-main: #ffe53d;
   --font-secondary: #202020;
 
-  --slider-handle: #d03f2f;
+  --slider-handle: #00ded0;
+  --slider-background: #1e0936;
 
   --key-color-main: #ffe53d;
   --key-color-secondary: #ffffff;
@@ -63,12 +72,16 @@
   --key-bg-main: #331c4d;
   --key-bg-main-shadow: #881c9e;
   --key-bg-secondary: #56077c;
+  --key-bg-secondary-active: #8631af;
   --key-bg-secondary-shadow: #be15f4;
+  --key-bg-secondary-shadow-active: #be15f4;
 
   --key-bg-active: #6c34ac;
 
   --key-bg-tertiary: #00ded0;
+  --key-bg-tertiary-active: #93fff8;
   --key-bg-tertiary-shadow: #6cf9f1;
+  --key-bg-tertiary-shadow-active: #6cf9f1;
 
   --display-bg: #1e0936;
 }

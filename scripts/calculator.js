@@ -81,11 +81,11 @@ function handleDecimal() {
 
 function handleOperator(id) {
   currentOperator = id;
-  if (!isOperatorSel) {
-    prevNum = userInput;
-    userInput = '0';
-    isOperatorSel = true;
-  }
+  // if (!isOperatorSel) {
+  prevNum = userInput;
+  userInput = '0';
+  isOperatorSel = true;
+  // }
 }
 
 //-----------------------------------------------------------------//

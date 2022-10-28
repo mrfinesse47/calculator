@@ -145,6 +145,11 @@ header #tri-state-mode-display span {
   box-shadow: inset 0px -4px 0px var(--key-bg-secondary-shadow);
 }
 
+#keypad .key-delete:active {
+  background-color: var(--key-bg-secondary-active);
+  box-shadow: inset 0px -4px 0px var(--key-bg-secondary-shadow-active);
+}
+
 #keypad .key-long {
   width: 8.3125rem;
   font-size: 1.25rem;
@@ -158,8 +163,18 @@ header #tri-state-mode-display span {
   box-shadow: inset 0px -4px 0px var(--key-bg-secondary-shadow);
 }
 
+#keypad .key-long.key-long-reset:active {
+  background-color: var(--key-bg-secondary-active);
+  box-shadow: inset 0px -4px 0px var(--key-bg-secondary-shadow-active);
+}
+
 #keypad .key-long.key-long-equals {
   color: var(--key-color-tertiary);
   background-color: var(--key-bg-tertiary);
   box-shadow: inset 0px -4px 0px var(--key-bg-tertiary-shadow);
+}
+
+#keypad .key-long.key-long-equals:active {
+  background-color: var(--key-bg-tertiary-active);
+  box-shadow: inset 0px -4px 0px var(--key-bg-tertiary-shadow-active);
 }
