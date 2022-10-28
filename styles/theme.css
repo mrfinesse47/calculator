@@ -10,10 +10,13 @@
 
   --key-color-main: #434a59;
   --key-color-secondary: #fff;
+  --key-color-tertiary: #fff;
   --key-bg-main: #eae3dc;
   --key-bg-main-shadow: #b3a497;
   --key-bg-secondary: #647198;
   --key-bg-secondary-shadow: #414e73;
+
+  --key-bg-active: #fffffe;
 
   --key-bg-tertiary: #d03f2f;
   --key-bg-tertiary-shadow: #93261a;
@@ -32,10 +35,13 @@
 
   --key-color-main: #36362c;
   --key-color-secondary: #fff;
+  --key-color-tertiary: #fff;
   --key-bg-main: #e5e4e1;
   --key-bg-main-shadow: #a79e91;
   --key-bg-secondary: #378187;
   --key-bg-secondary-shadow: #1b6066;
+
+  --key-bg-active: #fffffe;
 
   --key-bg-tertiary: #c85402;
   --key-bg-tertiary-shadow: #873901;
@@ -44,19 +50,25 @@
 }
 
 .darkAccent {
-  --bg-color: black;
-  --bg-secondary: #dcdaca;
-  --font-color-main: #3d3d3d;
+  --bg-color: #17062a;
+  --bg-secondary: #1e0936;
+  --font-color-main: #ffe53d;
   --font-secondary: #202020;
 
   --slider-handle: #d03f2f;
 
-  --key-color-main: #434a59;
-  --key-color-secondary: #fff;
-  --key-bg-main: #eae3dc;
-  --key-bg-main-shadow: #b3a497;
-  --key-bg-secondary: #647198;
-  --key-bg-secondary-shadow: #414e73;
+  --key-color-main: #ffe53d;
+  --key-color-secondary: #ffffff;
+  --key-color-tertiary: #1a2327;
+  --key-bg-main: #331c4d;
+  --key-bg-main-shadow: #881c9e;
+  --key-bg-secondary: #56077c;
+  --key-bg-secondary-shadow: #be15f4;
 
-  --display-bg: #ffffff;
+  --key-bg-active: #6c34ac;
+
+  --key-bg-tertiary: #00ded0;
+  --key-bg-tertiary-shadow: #6cf9f1;
+
+  --display-bg: #1e0936;
 }

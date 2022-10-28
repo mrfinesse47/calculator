@@ -133,7 +133,7 @@ header #tri-state-mode-display span {
 }
 
 #keypad .key-std:active {
-  background-color: #fffffe;
+  background-color: var(--key-bg-active);
 }
 
 #keypad .key-delete {
@@ -159,7 +159,7 @@ header #tri-state-mode-display span {
 }
 
 #keypad .key-long.key-long-equals {
-  color: var(--key-color-secondary);
+  color: var(--key-color-tertiary);
   background-color: var(--key-bg-tertiary);
   box-shadow: inset 0px -4px 0px var(--key-bg-tertiary-shadow);
 }
