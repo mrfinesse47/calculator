@@ -69,6 +69,7 @@ function triStateSliderMove(event) {
   }
 
   // default style dark mode -- see theme.css
+
   // darkAccent
 
   if (position === 0) {
